@@ -4,14 +4,27 @@
   "description": "back end of small-talk, an instant messanging app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "author": "Wilniyobri Tavarez",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "passport": "^0.6.0",
-    "socket.io": "^4.5.1"
-  }
+    "knex": "^2.2.0",
+    "mysql": "^2.18.1",
+    "socket.io": "^4.5.1",
+    "uniqid": "^5.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilni/small-talk-server.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/wilni/small-talk-server/issues"
+  },
+  "homepage": "https://github.com/wilni/small-talk-server#readme"
 }
