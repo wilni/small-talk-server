@@ -13,7 +13,7 @@ module.exports = [
         recipient_email: "wilniyobr.tavarez002@mymdc.net",
         connection_id: "1",
         content: "HI, im the personal account", 
-        sent_at: Date.now().toString(),
+        sent_at: (Date.now() + 1).toString(),
         connection_id: '1'
     },
     {

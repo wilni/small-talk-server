@@ -57,14 +57,33 @@ app.get('/connections/:email', (req, res) => {
     })
 })
 
+
+//messages routes 
+app.get('/messages/:id', (req, res) => {
+    let id = req.params.id;
+    knex('messages')
+    .where({connection_id: id})
+    .then(data => {
+        console.log('msg data',data)
+        res.send(data)
+    })
+})
+
+app.get('/messages/:id/last', (req, res) => {
+    let id = req.params.id;
+    knex('messages')
+    .where({connection_id: id})
+    .orderBy('sent_at', 'desc')
+    .then(data => {
+        console.log('last msg data',data[0])
+        res.send([data[0]])
+    })
+})
+
 app.listen(PORT, () => {
     console.log("listening on port 8080");
 })
 
 
-//code for finding email before at to convert to username 
-// let indexOfAt = email.indexOf('@')
-// let username = email.split(indexOfAt);
-//email.slice(0,indexOfAt);
 
 
