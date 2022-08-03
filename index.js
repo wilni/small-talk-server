@@ -47,7 +47,15 @@ app.post('/user/:email', (req, res) => {
     .insert(newUser).then((data) => {res.send(data)})
 });
 
-
+// connections routes 
+app.get('/connections/:email', (req, res) => {
+    let email = req.params.email;
+    knex('connections')
+    .where({email_1: `${email}`}).orWhere({email_2: `${email}`})
+    .then(data => {
+        res.send(data);
+    })
+})
 
 app.listen(PORT, () => {
     console.log("listening on port 8080");
