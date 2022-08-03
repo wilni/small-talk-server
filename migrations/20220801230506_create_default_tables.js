@@ -16,10 +16,10 @@ exports.up = function(knex) {
     .createTable('messages', (table) => {
         table.string('message_id').notNullable().primary();
         table.string('sender_email').notNullable().references('email').inTable('users').onUpdate('CASCADE').onDelete('CASCADE');
-        table.string('reciepient_email').notNullable().references('email').inTable('users').onUpdate('CASCADE').onDelete('CASCADE');
+        table.string('recipient_email').notNullable().references('email').inTable('users').onUpdate('CASCADE').onDelete('CASCADE');
         table.string('connection_id').notNullable().references('connection_id').inTable('connections').onUpdate('CASCADE').onDelete('CASCADE');
         table.text('content');
-        table.timestamp('sent_at').defaultTo(knex.fn.now());
+        table.string('sent_at');
     });
 };
 
