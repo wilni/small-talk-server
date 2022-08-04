@@ -12,13 +12,34 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
+//socket server
+// const http = require('http');
+// const httpServer = http.createServer(app);
+// const io = new Server(httpServer, {
+//     cors: {
+//         origin: ["http://localhost:3000", "http://127.0.0.1:3000", "http://10.0.0.216:3000"],
+//         methods: ["GET", "POST", "DELETE", "PUT"],
+//     }
+// })
+// io.on("connection", (socket) => {
+//     console.log(`connected with id: ${socket.id}`);
+
+//     socket.on("send-message", (data) => {
+//         console.log("data from send message listener", data)
+//         socket.broadcast.emit("recieved-message", data);
+//     })
+// });
+
 
 //routes 
 // const userRoutes = require('./routes/users.js');
 // app.use('/user', userRoutes);
 
-//users route to move to routes and controllers 
 
+
+
+
+//users route to move to routes and controllers 
 app.get('/user/:email', (req, res) => {
     //query db for user send back user obj || false;
     let email = req.params.email;
