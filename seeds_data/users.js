@@ -19,4 +19,8 @@ module.exports = [
         username: 'sarah',
         email: 'sarah@aim.com'
     },
+    {
+        username: 'wilnitavarez',
+        email: 'wilnitavarez@gmail.com'
+    },
 ]
