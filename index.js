@@ -31,10 +31,16 @@ io.on("connection", (socket) => {
         socket.join(data)
     })
 
+    socket.on("played-turn", (data) => {
+        console.log("data from send played turn listener", data);
+        socket.to(data.connection_id).emit("recieved-turn", data);
+    })
+
     socket.on("send-message", (data) => {
         console.log("data from send message listener", data);
-        socket.to(data.connectionID).emit("recieved-message", data.msg);
+        socket.to(data.connection_id).emit("recieved-message", data.msg);
     })
+
 });
 
 

@@ -12,12 +12,12 @@ module.exports = [
         email: 'john@aim.com'
     },
     {
-        username: 'sally',
-        email: 'sally@aim.com'
+        username: 'raquel',
+        email: 'raquel@aim.com'
     },
     {
-        username: 'sarah',
-        email: 'sarah@aim.com'
+        username: 'rocky',
+        email: 'rocky@aim.com'
     },
     {
         username: 'wilnitavarez',
