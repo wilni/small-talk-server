@@ -25,19 +25,16 @@ const io = new Server(httpServer, {
 })
 
 io.on("connection", (socket) => {
-    console.log(`connected with id: ${socket.id}`);
 
     socket.on('join_room', (data) => {
         socket.join(data)
     })
 
     socket.on("played-turn", (data) => {
-        console.log("data from send played turn listener", data);
         socket.to(data.connection_id).emit("recieved-turn", data);
     })
 
     socket.on("send-message", (data) => {
-        console.log("data from send message listener", data);
         socket.to(data.connection_id).emit("recieved-message", data.msg);
     })
 
@@ -60,10 +57,8 @@ app.get('/user/:email', (req, res) => {
     .where({email: email})
     .then((data) => {
         if(data[0] === undefined){
-            console.log(data);
             res.status(204).send({sucess: false})
         }else{
-            console.log(data)
             res.status(200).send({sucess: true, email: email});
         }
     })
@@ -80,7 +75,6 @@ app.post('/user/:email', (req, res) => {
     knex('users')
     .where({email: email})
     .then(data => {
-        console.log("search before insert", data)
         if(data[0] === undefined){
             knex('users')
             .insert(newUser).then((data) => {res.status(201).send(data)})
@@ -106,7 +100,6 @@ app.get('/connection/:id', (req, res) => {
     knex('connections')
     .where({connection_id: id})
     .then(data => {
-        console.log(data);
         res.status(200).send(data);
     })
 })
@@ -116,7 +109,6 @@ app.post('/connections', (req, res) => {
     let newConnection = req.body;
         knex('users')
         .where({email: email_2}).then(data => {
-            console.log("email is not found",data);
             if(data[0] === undefined){
                 res.status(200).send({sucess: false, message:"User not found :("})
             }else{
@@ -136,7 +128,6 @@ app.get('/messages/:id', (req, res) => {
     knex('messages')
     .where({connection_id: id})
     .then(data => {
-        console.log('msg data',data)
         res.status(200).send(data)
     })
 })
@@ -147,7 +138,6 @@ app.get('/messages/:id/last', (req, res) => {
     .where({connection_id: id})
     .orderBy('sent_at', 'desc')
     .then(data => {
-        console.log('last msg data',data[0])
         res.status(200).send([data[0]])
     })
 })
@@ -159,10 +149,6 @@ app.post('/messages', (req, res) => {
         res.status(201).send(data)
     })
 })
-
-// app.listen(PORT, () => {
-//     console.log("listening on port 8080");
-// })
 
 httpServer.listen(PORT, () => {
     console.log("server running on port 8080");
