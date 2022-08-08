@@ -45,6 +45,9 @@ io.on("connection", (socket) => {
 // const userRoutes = require('./routes/users.js');
 // app.use('/user', userRoutes);
 
+// const connectionRoutes = require('./routes/users.js');
+// app.use('/user', userRoutes);
+
 
 
 
@@ -95,7 +98,7 @@ app.get('/connections/:email', (req, res) => {
 })
 
 
-app.get('/connection/:id', (req, res) => {
+app.get('/connections/:id/id', (req, res) => {
     let id = req.params.id;
     knex('connections')
     .where({connection_id: id})
