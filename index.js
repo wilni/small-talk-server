@@ -27,7 +27,7 @@ const httpServer = http.createServer(app);
 
 const io = new Server(httpServer, {
     cors: {
-        // origin: "http:google.com", //"http://localhost:3000", "https://small-talk-live.herokuapp.com"],
+        origin: ["http://localhost:3000", "https://small-talk-live.herokuapp.com", "http://small-talk-live.herokuapp.com"],
         methods: ["GET", "POST", "DELETE", "PUT"],
     }
 })
