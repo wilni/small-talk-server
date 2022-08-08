@@ -12,6 +12,14 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
+//routes 
+// const userRoutes = require('./routes/user.js');
+// app.use('/user', userRoutes);
+
+// const connectionRoutes = require('./routes/users.js');
+// app.use('/user', userRoutes);
+
+
 // socket server
 const { Server } = require("socket.io");
 const http = require('http');
@@ -41,12 +49,6 @@ io.on("connection", (socket) => {
 });
 
 
-//routes 
-// const userRoutes = require('./routes/users.js');
-// app.use('/user', userRoutes);
-
-// const connectionRoutes = require('./routes/users.js');
-// app.use('/user', userRoutes);
 
 
 
