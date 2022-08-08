@@ -2,7 +2,7 @@ require('dotenv').config();
 const PORT = process.env.PORT || 8080;
 const express = require('express');
 const cors = require('cors');
-const knex = require('knex')(require('./knexfile').development);
+const knex = require('knex')(require('./knexfile'));
 
 
 
@@ -27,7 +27,7 @@ const httpServer = http.createServer(app);
 
 const io = new Server(httpServer, {
     cors: {
-        origin: ["http://localhost:3000", "http://127.0.0.1:3000", "http://10.0.0.216:3000", "http://192.168.1.127:3000"],
+        origin: ["http://localhost:3000", "https://small-talk-live.herokuapp.com"],
         methods: ["GET", "POST", "DELETE", "PUT"],
     }
 })
