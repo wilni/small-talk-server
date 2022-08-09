@@ -8,7 +8,7 @@ const knex = require('knex')(require('./knexfile'));
 
 //app and middleware
 const app = express();
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.static('public'));
 
@@ -19,6 +19,10 @@ app.use(express.static('public'));
 // const connectionRoutes = require('./routes/users.js');
 // app.use('/user', userRoutes);
 
+var corsOptions = {
+    origin: ["http://localhost:3000", "https://small-talk-live.herokuapp.com", "http://small-talk-live.herokuapp.com", "https://small-talk-live.herokuapp.com/", "http://small-talk-live.herokuapp.com/"],
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
 
 // socket server
 const { Server } = require("socket.io");
@@ -27,7 +31,7 @@ const httpServer = http.createServer(app);
 
 const io = new Server(httpServer, {
     cors: {
-        origin: ["http://localhost:3000", "https://small-talk-live.herokuapp.com", "http://small-talk-live.herokuapp.com", "https://small-talk-live.herokuapp.com/", "http://small-talk-live.herokuapp.com/"],
+        // origin: ["http://localhost:3000", "https://small-talk-live.herokuapp.com", "http://small-talk-live.herokuapp.com", "https://small-talk-live.herokuapp.com/", "http://small-talk-live.herokuapp.com/"],
         methods: ["GET", "POST", "DELETE", "PUT"],
     }
 })
