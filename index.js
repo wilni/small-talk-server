@@ -127,6 +127,14 @@ app.post('/connections', (req, res) => {
         })
 })
 
+app.delete('/connections/:id', (req, res) => {
+    let {id} = req.params;
+    console.log(req.params);
+    knex('connections').delete()
+    .where( {'connection_id': id})
+    .then(data => res.status(200).send({data, sucess:true}))
+})
+
 
 //messages routes 
 app.get('/messages/:id', (req, res) => {
