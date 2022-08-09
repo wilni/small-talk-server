@@ -28,8 +28,8 @@ const httpServer = http.createServer(app);
 
 const io = new Server(httpServer, {
     cors: {
-        origin: ["http://localhost:3000", "https://small-talk-live.herokuapp.com", "http://small-talk-live.herokuapp.com", "https://small-talk-live.herokuapp.com/", "http://small-talk-live.herokuapp.com/"],
-        methods: ["GET", "POST", "DELETE", "PUT"],
+        origin: ["http://localhost:3000", "https://small-talk-live.herokuapp.com"],
+        methods: ["GET", "POST", "PUT", "DELETE"]
     }
 })
 
@@ -125,6 +125,14 @@ app.post('/connections', (req, res) => {
                 })
             }
         })
+})
+
+app.delete('/connections/:id', (req, res) => {
+    let {id} = req.params;
+    console.log(req.params);
+    knex('connections').delete()
+    .where( {'connection_id': id})
+    .then(data => res.status(200).send({data, sucess:true}))
 })
 
 
