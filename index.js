@@ -164,6 +164,21 @@ app.post('/messages', (req, res) => {
     })
 })
 
+app.put('/messages/:id', (req, res) => {
+    let id = req.params.id;
+    knex('messages')
+    .where({connection_id: id})
+    .orderBy('sent_at', 'desc')
+    .then(data => {
+        let msg_id = data[0].message_id;
+        knex('messages')
+        .where({message_id : msg_id})
+        .update({read: 1}).then(info => {
+            res.status(200).send("updated")
+        })
+    })
+})
+
 httpServer.listen(PORT, () => {
     console.log("server running on port 8080");
 })
