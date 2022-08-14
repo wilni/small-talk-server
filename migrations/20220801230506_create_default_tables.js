@@ -20,6 +20,7 @@ exports.up = function(knex) {
         table.string('connection_id').notNullable().references('connection_id').inTable('connections').onUpdate('CASCADE').onDelete('CASCADE');
         table.text('content');
         table.string('sent_at');
+        table.boolean("read").defaultTo(false);
     });
 };
 

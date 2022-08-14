@@ -5,7 +5,8 @@ module.exports = [
         recipient_email: 'raquel@aim.com',
         content: "first text",
         sent_at: Date.now().toString(),
-        connection_id: '1'
+        connection_id: '1',
+        read: false
     },
     {
         message_id: '2',
@@ -14,7 +15,8 @@ module.exports = [
         connection_id: "2",
         content: "HI!", 
         sent_at: (Date.now() + 1).toString(),
-        connection_id: '2'
+        connection_id: '2',
+        read: false
     }
     
 ]
