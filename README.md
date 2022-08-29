@@ -63,14 +63,16 @@ https://github.com/wilni/small-talk-server
 For the client side: 
 
 - clone the repository 
-- npm install
-- npm start 
+- run npm install
+- run npm start 
 
 
 For the server side: 
-- clone the repository 
-- npm install
-- node index.js
+- install MySQL
+- clone the repository
+- configure knexfile.js file with SQL server info
+- run npm install
+- run node index.js
 
 
 ## dependencies
